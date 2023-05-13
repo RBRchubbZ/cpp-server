@@ -31,3 +31,5 @@ You should now be able to access `localhost:8000`
 
 
 ### FUTURE STEPS HERE
+MAYBE USE NGINX FOR REVERSE PROXY 
+ASK THE TEAM!!!
