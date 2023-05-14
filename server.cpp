@@ -3,7 +3,7 @@
 #include <string>
 
 
-std::string displayImage(std::string imageCode);
+//std::string displayImage(std::string imageCode);
 std::string convertToBase64(std::string imageCode);
 
 int main(){
@@ -22,7 +22,7 @@ int main(){
     //json return // const request captures request from client
     CROW_ROUTE(app, "/postjson").methods("POST"_method) ([](const crow::request& r){
         // apply givin input into json --readvalue
-        crow::json::rvalue req_body = crow::json::load(r.body); // value cant be returned as not yet
+        crow::json::rvalue req_body = crow::json::load(r.body); // value cant be returned as not yet set
         // apply that value to a new variable --wvalue
         crow::json::wvalue seri_data = req_body; // 
         // get image base64 code
