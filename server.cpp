@@ -3,7 +3,7 @@
 #include <string>
 
 
-// std::string createImageString(std::string imageCode);
+std::string displayImage(std::string imageCode);
 std::string convertToBase64(std::string imageCode);
 
 int main(){
@@ -28,11 +28,9 @@ int main(){
         // get image base64 code
         std::string b64Code = convertToBase64(seri_data["ASM-IMG"].dump());
 
-        // display to webpage JUST FOR DEBUGGING
-
-        auto page = crow::mustache::load("displayimage.html"); // load the given .html page from the templates directory 
-        crow::mustache::context imgToSend ({{"displayImage", b64Code}});// add the given "img" data to the specified component // from createImageString
-        return page.render(imgToSend); // send full page with rendered data on it
+        //displayImage(b64Code); // display image in browser for test
+        
+        return b64Code;
 
     });
 
@@ -45,8 +43,17 @@ std::string convertToBase64(std::string imageCode){
     std::string b64String = crow::utility::base64encode(imageCode, imageCode.size());
     return b64String;
 }
-// Note that the data must have "image:base64:" appended before the BASE64 data string.
 
+//                        display to webpage JUST FOR DEBUGGING
+//                        ERROR ON RENDER IMGTOSEND CHECK IF WORTH FIXING OR NAH 
+
+// std::string displayImage(std::string imageCode){
+//     auto page = crow::mustache::load("displayimage.html"); // load the given .html page from the templates directory 
+//     crow::mustache::context imgToSend ({{"displayImage", imageCode}});// add the given "img" data to the specified component // from createImageString
+//     return page.render(imgToSend); // send full page with rendered data on it
+// }
+
+// Note that the data must have "image:base64:" appended before the BASE64 data string.
 
 //================================================================================================================
 //                                                    HELL                                                       =
